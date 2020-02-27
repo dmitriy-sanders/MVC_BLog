@@ -1,0 +1,2 @@
+<?php
+echo "<br>THIS IS DEFAULT LAYOUT, HEADER FOOTER, DESIGN ETC.<br>";
