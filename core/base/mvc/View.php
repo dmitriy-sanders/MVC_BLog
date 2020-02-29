@@ -24,15 +24,14 @@ class View
         {
             extract($data);
         }
-        require_once LAYOUTS . "/" . $this->layout . ".php";
+
 
         $viewFile = VIEWS . "/{$this->controller}/" . $this->view . ".php";
         if(file_exists($viewFile)) {
             ob_start();
             require_once $viewFile;
             $content = ob_get_clean();
-
-            echo $content;
         }
+        require_once LAYOUTS . "/" . $this->layout . ".php";
     }
 }

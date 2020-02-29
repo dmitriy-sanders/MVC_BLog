@@ -8,7 +8,8 @@ class MainModel extends Model
 {
     public function getAllPosts()
     {
-        $posts = $this->db->query("SELECT * FROM posts")->fetchAll();
-        return $posts;
+        $hits = $this->db->query("SELECT * FROM products WHERE hit=1")->fetchAll();
+        $new = $this->db->query("SELECT * FROM products WHERE new=1")->fetchAll();
+        return [$hits, $new];
     }
 }

@@ -7,7 +7,7 @@ abstract class Controller
     protected $route;
     protected $controller;
     protected $view;
-    protected $data;
+    protected $data = [];
     protected $meta;
     protected $layout = "default";
 
@@ -26,7 +26,7 @@ abstract class Controller
 
     protected function setData($data)
     {
-        $this->data = $data;
+        $this->data = array_merge($data, $this->data);
     }
 
     protected function setMeta($title = "", $keywords = "", $desc = "")

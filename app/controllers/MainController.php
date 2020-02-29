@@ -11,8 +11,9 @@ class MainController extends Controller
     public function indexAction()
     {
         $mainModelObj = new MainModel();
-        $posts = $mainModelObj->getAllPosts();
+        $products = $mainModelObj->getAllPosts();
+        [$hits, $new] = $products;
 
-        $this->setData(compact("posts"));
+        $this->setData(compact("hits", "new"));
     }
 }

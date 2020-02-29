@@ -1,0 +1,14 @@
+[21:12:41 28-02-2020]
+Message: SQLSTATE[HY000] [1049] Unknown database '1mvc.loc'
+File: /var/www/mvc.loc/core/base/DataBase.php
+Line: 20
+Code: 1049
+=========================
+
+[21:13:34 28-02-2020]
+Message: SQLSTATE[HY000] [1049] Unknown database '1mvc.loc'
+File: /var/www/mvc.loc/core/base/DataBase.php
+Line: 20
+Code: 1049
+=========================
+

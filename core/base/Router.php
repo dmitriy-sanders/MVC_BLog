@@ -14,9 +14,10 @@ class Router
     {
         $url = trim($url, "/");
         if(self::matchUrl($url)) {
-            dep(self::$route);
-            $controller = "app\\controllers\\".self::$route['controller'] . "Controller";
-            $controllerFile = ROOT . "/" . $controller.".php";
+//            dep(self::$route);
+            $controller = self::getNamespace() . self::$route['controller'] . "Controller";
+            $controllerFile = self::makeFilePath(ROOT . "/" . $controller.".php");
+
             if(file_exists($controllerFile)) {
                 $controllerObj = new $controller(self::$route);
                 $action = self::$route['action'] . "Action";
@@ -54,9 +55,19 @@ class Router
                 self::$route = self::$routes[$key];
                 return true;
             }
-
         }
-
         return false;
+    }
+
+    private static function makeFilePath(string $path)
+    {
+        $path = str_replace("\\", "/", $path);
+        return $path;
+    }
+
+    private static function getNamespace()
+    {
+        $namespace = "app\controllers\\";
+        return $namespace;
     }
 }
