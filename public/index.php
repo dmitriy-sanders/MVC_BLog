@@ -5,4 +5,4 @@ require_once "../config/conf.php";
 
 $app = new \core\App();
 
-dep(\core\App::$app->getProperty("currency"));
+//dep(\core\App::$app->getProperty("currency"));
