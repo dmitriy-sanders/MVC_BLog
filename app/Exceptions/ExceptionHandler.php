@@ -34,8 +34,8 @@ class ExceptionHandler
 
     private function displayError($errMsg, $errFile, $errLine, $errCode = 0)
     {
-
         if(DEBUG == 1) {
+            dep(EXCEPTIONS . "/templates/development.php");
             require_once EXCEPTIONS . "/templates/development.php";
         }elseif(!DEBUG && $errCode = 404) {
             require_once EXCEPTIONS . "/templates/404.php";

@@ -6,7 +6,7 @@ use app\Exceptions\ExceptionHandler;
 use app\Exceptions\NoConnectionWithDB;
 use PDO;
 
-final class DataBase
+trait DataBase
 {
     private static $DB_HOST = "localhost";
     private static $DB_NAME = "mvc.loc";
@@ -29,12 +29,9 @@ final class DataBase
         return $connection;
     }
 
-    private function __construct()
-    {
-    }
+    private function __construct() {}
 
-    private function __clone()
-    {
+    private function __clone() {}
 
-    }
+    private function __wakeup() {}
 }

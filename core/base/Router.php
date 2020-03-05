@@ -12,53 +12,66 @@ class Router
 
     public static function makeUrl($url)
     {
-        $url = trim($url, "/");
+        $url = self::removeQueryString(trim($url, "/"));
+//        dep($url);
         if(self::matchUrl($url)) {
-//            dep(self::$route);
             $controller = self::getNamespace() . self::$route['controller'] . "Controller";
             $controllerFile = self::makeFilePath(ROOT . "/" . $controller.".php");
 
             if(file_exists($controllerFile)) {
+//                dep(self::$route);
                 $controllerObj = new $controller(self::$route);
                 $action = self::$route['action'] . "Action";
                 if(method_exists($controllerObj, $action)) {
                     $controllerObj->$action();
                     $controllerObj->getView();
                 }else{
-                    throw new UndefinedMethodException("Such method <u>$action</u> not found in <b>$controller</b>");
+                    throw new \Exception("Such method <u>$action</u> not found in <b>$controller</b>");
                 }
             }else{
-                throw new UndefinedControllerException("Such controller is not found <b>$controller</b>");
+                throw new \Exception("Such controller is not found <b>$controller</b>");
             }
+        }else{
+            throw new \Exception("Page not found!", 404);
         }
     }
+//    public static function getRoutes()
+//    {
+//        return self::$routes;
+//    }
 
-    public static function addRoute($route = [])
+
+    public static function addRoute($regexp, $route = [])
     {
-        $way = $route[0];
-        $controllerName = $route[1];
-        $methodName = $route[2];
-
-        self::$routes[] = ["way" => $way, "controller" => $controllerName, "action" => $methodName];
+        self::$routes[$regexp] = $route;
     }
 
-    public static function getRoutes()
-    {
-        return self::$routes;
-    }
-
-    private static function matchUrl($url)
+    public static function matchUrl($url)
     {
         foreach (self::$routes as $key => $value)
         {
-            if(self::$routes[$key]['way'] == $url) {
-                self::$route = self::$routes[$key];
+            $pattern = $key;
+            $url = trim($url, "/");
+            if(preg_match($pattern, $url, $matches)) {
+                foreach ($matches as $k => $v) {
+                    if(!is_int($k)) {
+                        $route[$k] = $v;
+                    }
+                }
+                if(empty($route['controller'])) {
+                    $route['controller'] = "Main";
+                }
+                if(empty($route['action'])) {
+                    $route['action'] = "index";
+                }
+                self::$route['controller'] = self::makeController($route['controller']);
+                self::$route['action'] = $route['action'];
+
                 return true;
             }
         }
         return false;
     }
-
     private static function makeFilePath(string $path)
     {
         $path = str_replace("\\", "/", $path);
@@ -69,5 +82,24 @@ class Router
     {
         $namespace = "app\controllers\\";
         return $namespace;
+    }
+
+    private static function makeController($name)
+    {
+        $name = str_replace("-", " ", $name);
+        $name = ucwords($name);
+        $name = str_replace(" ", "", $name);
+        return $name;
+    }
+
+    private static function removeQueryString($url)
+    {
+        if(strpos($url, "&") !== false) {
+            $params = explode("&", $url, 2);
+//            dep($params);
+            $url = explode("&", $url)[0];
+        }
+
+        return $url;
     }
 }

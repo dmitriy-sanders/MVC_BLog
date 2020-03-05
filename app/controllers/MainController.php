@@ -13,7 +13,7 @@ class MainController extends Controller
         $mainModelObj = new MainModel();
         $products = $mainModelObj->getAllPosts();
         [$hits, $new] = $products;
-
+        
         $this->setData(compact("hits", "new"));
     }
 }

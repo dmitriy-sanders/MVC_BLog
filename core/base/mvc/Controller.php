@@ -2,6 +2,9 @@
 
 namespace core\mvc;
 
+use app\views\currency\Currency;
+use core\App;
+
 abstract class Controller
 {
     protected $route;
@@ -16,6 +19,15 @@ abstract class Controller
         $this->route = $route;
         $this->controller = $route['controller'];
         $this->view = $route['action'];
+
+        // Getting Currencies
+        $currObj = new Currency();
+
+        $currencies = $currObj->getCurrencies();
+        App::$app->setProperty("currencies", $currencies);
+
+        $currency = $currObj->getCurrency($currencies);
+        App::$app->setProperty("currency", $currency);
     }
 
     public function getView()

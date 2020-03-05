@@ -8,7 +8,7 @@ define("EXCEPTIONS", APP . "/Exceptions");
 define("LAYOUTS", ROOT . "/app/views/layouts");
 define("VIEWS", ROOT . "/app/views");
 
-$app = "http://".$_SERVER['HTTP_HOST'];
+$app = "http://".$_SERVER['HTTP_HOST'] . "/";
 define("HOME", $app);
 
 require_once CONF . "/routes.php";

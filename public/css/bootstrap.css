@@ -7,6 +7,23 @@
 .gray-bg {
   background: rgba(102, 120, 134, 0.6);
 }
+span.deposit {
+  background: #1ba821;
+  padding: 5px;
+  border-radius: 4px;
+  color: #fff;
+}
+.dep-text {
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+.list-li {
+  color: #212529;
+}
+.list-li:hover {
+  color: #212529;
+  text-decoration: none;
+}
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -1721,6 +1738,7 @@ pre code {
 
 .table-hover tbody tr:hover {
   background-color: rgba(0, 0, 0, 0.075);
+  cursor: pointer;
 }
 
 .table-primary,
@@ -5178,6 +5196,7 @@ tbody.collapse.show {
   width: 100%;
   color: #495057;
   text-align: inherit;
+  cursor: pointer;
 }
 
 .list-group-item-action:hover, .list-group-item-action:focus {

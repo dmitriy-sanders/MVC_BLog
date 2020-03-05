@@ -4,7 +4,7 @@ namespace core\mvc;
 
 use core\DataBase;
 
-class Model
+abstract class Model
 {
     protected $db;
 
