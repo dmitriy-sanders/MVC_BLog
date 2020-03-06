@@ -45,4 +45,19 @@ abstract class Controller
     {
         $this->meta = ["title" => $title, "keywords" => $keywords, "desc" => $desc];
     }
+
+    protected function isAJAX()
+    {
+        if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && $_SERVER['HTTP_X_REQUESTED_WITH'] === "XMLHttpRequest") {
+            return true;
+        }
+        return false;
+    }
+
+    public function loadView($view, $vars = [])
+    {
+        extract($vars);
+        require_once VIEWS . "/{$this->controller}/{$view}.php";
+        exit;
+    }
 }
