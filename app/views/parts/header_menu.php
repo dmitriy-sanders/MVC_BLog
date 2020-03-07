@@ -1,29 +1,29 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">LOGOTYPE</a>
+    <a class="navbar-brand" href="<?= HOME ?>">LOGOTYPE</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item home">
                 <a class="nav-link" href="<?= HOME ?>">Главная</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item login">
                 <a class="nav-link" href="login">Авторизация</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item register">
                 <a class="nav-link" href="register">Регистрация</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item catalog">
                 <a class="nav-link" href="catalog">Каталог</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item feedback">
                 <a class="nav-link" href="feedback">Обратная связь</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item advertise">
                 <a class="nav-link" href="advertise">Реклама</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item privacy-policy">
                 <a class="nav-link" href="privacy-policy">Пользовательское соглашение</a>
             </li>
         </ul>

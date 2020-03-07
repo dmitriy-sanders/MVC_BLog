@@ -22,7 +22,7 @@
                 <p>Email: <span style="color: #0000ff;"><a style="color: #0000ff;" href="mailto:b2b@mvc.ua">b2b@mvc.ua</a></span></p>
                 <p>Перед запросом на email, настоятельно рекомендую связаться со мной ВКонтакте или Телеграмме:&nbsp;</p>
 <!--                <p>ВКонтакте -&nbsp;<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://vk.com/nike495">https://vk.com/nike495</a></span></p>-->
-                <p>Телеграм -&nbsp;<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://t.me/dmitriyuvin" target="_blank" rel="noopener noreferrer">https://t.me/nike495</a></span></p>
+                <p>Телеграм -&nbsp;<span style="color: #0000ff;"><a style="color: #0000ff;" href="https://t.me/dmitriyuvin" target="_blank" rel="noopener noreferrer">https://t.me/dmitriyuvin</a></span></p>
             </div>
     </div>
 </div>

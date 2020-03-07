@@ -52,10 +52,11 @@
 </div>
 
 
-
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/currency.js"></script>
 <script type="text/javascript" src="js/cart_ajax.js"></script>
+<script type="text/javascript" src="js/active.js"></script>
+<script type="text/javascript" src="js/loging.js"></script>
 <script type="text/javascript" src="js/bootstrap.js"></script>
 <script type="text/javascript" src="icons/build/build-svgs.js"></script>
 
