@@ -13,13 +13,11 @@ class Router
     public static function makeUrl($url)
     {
         $url = self::removeQueryString(trim($url, "/"));
-//        dep($url);
         if(self::matchUrl($url)) {
             $controller = self::getNamespace() . self::$route['controller'] . "Controller";
             $controllerFile = self::makeFilePath(ROOT . "/" . $controller.".php");
 
             if(file_exists($controllerFile)) {
-//                dep(self::$route);
                 $controllerObj = new $controller(self::$route);
                 $action = self::$route['action'] . "Action";
                 if(method_exists($controllerObj, $action)) {
@@ -96,10 +94,8 @@ class Router
     {
         if(strpos($url, "&") !== false) {
             $params = explode("&", $url, 2);
-//            dep($params);
             $url = explode("&", $url)[0];
         }
-
         return $url;
     }
 }

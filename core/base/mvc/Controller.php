@@ -13,6 +13,7 @@ abstract class Controller
     protected $data = [];
     protected $meta;
     protected $layout = "default";
+    public $module = "";
 
     public function __construct(array $route)
     {

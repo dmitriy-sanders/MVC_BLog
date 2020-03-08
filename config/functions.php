@@ -21,6 +21,7 @@ function redirect($address = false)
     }else{
         $redirect = $_SERVER['HTTP_REFERER'] ? $_SERVER['HTTP_REFERER'] : HOME;
     }
+
     header("Location: $redirect");
-    exit();
+    exit;
 }

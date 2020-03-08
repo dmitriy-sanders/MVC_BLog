@@ -5,26 +5,20 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item home">
-                <a class="nav-link" href="<?= HOME ?>">Главная</a>
-            </li>
-            <li class="nav-item login">
-                <a class="nav-link" href="/login">Авторизация</a>
-            </li>
-            <li class="nav-item register">
-                <a class="nav-link" href="/register">Регистрация</a>
+            <li class="nav-item cabinet">
+                <a class="nav-link" href="cabinet">Кабинет</a>
             </li>
             <li class="nav-item catalog">
-                <a class="nav-link" href="/catalog">Каталог</a>
+                <a class="nav-link" href="catalog">Каталог</a>
             </li>
             <li class="nav-item feedback">
-                <a class="nav-link" href="/services/feedback">Обратная связь</a>
+                <a class="nav-link" href="feedback">Обратная связь</a>
             </li>
             <li class="nav-item advertise">
-                <a class="nav-link" href="/services/advertise">Реклама</a>
+                <a class="nav-link" href="advertise">Реклама</a>
             </li>
             <li class="nav-item privacy-policy">
-                <a class="nav-link" href="/services/privacypolicy">Пользовательское соглашение</a>
+                <a class="nav-link" href="privacy-policy">Пользовательское соглашение</a>
             </li>
         </ul>
         <ul class="navbar-nav">
@@ -40,7 +34,6 @@
             <li class="nav-item">
                 <span class="dep-text">Депозит: <span class="deposit">100000</span></span>
             </li>
-
         </ul>
     </div>
 </nav>

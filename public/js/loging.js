@@ -7,7 +7,7 @@ function logIn()
 
     if(login.length === 0){
         window.errorBlock.innerHTML = "Поле 'Логин' - пустое! Заполните его чтобы продолжить!";
-    }else if(password.length < 8){
+    }else if(password.length < 6){
         if(password.length === 0){
             window.errorBlock.innerHTML = "Поле 'Пароль' - пустое! Заполните его чтобы продолжить!";
         }else{
@@ -31,7 +31,6 @@ function loginAJAX(login, password, remember)
     xhr.open(method, url, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-
     xhr.onreadystatechange = function() {
         if (xhr.readyState !== 4) return;
         if (xhr.status !== 200) {
@@ -47,8 +46,9 @@ function loginAJAX(login, password, remember)
 function getResponse(data)
 {
     if(data){
+        if(data === "success") {
+            window.location = "/cabinet";
+        }
         window.errorBlock.innerHTML = data;
-    }else{
-        window.errorBlock.innerHTML = "Такой пользователь есть! Успешно залогинились!";
     }
 }

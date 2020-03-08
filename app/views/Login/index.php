@@ -6,7 +6,7 @@
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label for="login">Логин</label>
-                <input type="text" class="form-control" id="login" name="login" placeholder="Логин" value="<?= @$_POST['login'] ?>">
+                <input type="text" class="form-control" id="login" name="login" placeholder="Логин">
             </div>
         </div>
         <div class="form-row">
@@ -17,8 +17,8 @@
         </div>
         <div class="form-group">
             <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="rememberMe" value="" name="remember">
-                <label class="custom-control-label" for="rememberMe">Запомнить меня!</label>
+                <input type="checkbox" class="custom-control-input" id="rememberMe" value="1" name="remember">
+                <label class="custom-control-label" for="rememberMe">Запомнить меня!<br><span style="font-size: 10px">( На неделю )</span></label>
             </div>
         </div>
         <input type="submit" class="btn btn-primary" id="do_login" name="do_login" value="Войти!">

@@ -3,6 +3,7 @@
 namespace core;
 
 use app\Exceptions\ExceptionHandler;
+use app\models\Cabinet;
 use core\mvc\Model;
 
 class App
@@ -16,5 +17,13 @@ class App
         self::$app = Registry::getInstance();
         Router::makeUrl($url);
         new ExceptionHandler();
+//        $this->authUser();
+    }
+
+    protected function authUser()
+    {
+        if(isset($_SESSION['user']) || isset($_COOKIE['user'])) {
+            new Cabinet();
+        }
     }
 }

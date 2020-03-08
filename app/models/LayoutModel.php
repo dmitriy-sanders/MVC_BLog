@@ -9,7 +9,7 @@ class LayoutModel
         $catsObj = new Categories();
         $categories = $catsObj->getCatsWithoutParent();
         ob_start();
-        require_once VIEWS . "/parts/categories.php";
+        require_once VIEWS . "/parts/sidebar.php";
         echo ob_get_clean();
     }
 

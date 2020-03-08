@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\UserLogin;
 use core\mvc\Controller;
 
 class LoginController extends Controller
@@ -13,14 +14,26 @@ class LoginController extends Controller
 
     public function loginAction()
     {
-        $login = $_POST['login'] ?? null;
-        $password = $_POST['password'] ?? null;
-        $remember = $_POST['remember'] ?? null;
+        $login = $this->escapeString($_POST['login']) ?? null;
+        $password = $this->escapeString($_POST['password']) ?? null;
+        $remember = $this->escapeString($_POST['remember']) ?? null;
 
-        if($login == "admin") {
-            exit();
+        $userObj = new UserLogin();
+        if($userObj->checkLogin($login)) {
+            if($userObj->checkPassword($password)){
+                $userObj->logUser($remember);
+                echo "success";
+            }else{
+                echo "Пароль неверный!";
+            }
         }else{
-            exit("Пользователя с таким логином не существует!");
+            echo "Пользователь с таким логином не найден!";
         }
+        exit;
+    }
+
+    protected function escapeString(string $string)
+    {
+        return htmlspecialchars(trim($string));
     }
 }

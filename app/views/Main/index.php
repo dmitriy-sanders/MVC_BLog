@@ -7,7 +7,7 @@
                 <th scope="col" colspan="2">Товар</th>
                 <th scope="col">Кол-во</th>
                 <th scope="col">Цена (шт.)</th>
-                <th scope="col">В корзину</th>
+                <th scope="col"></th>
             </tr>
             </thead>
             <tbody>
@@ -35,7 +35,7 @@
                 <th scope="col" colspan="2">Товар</th>
                 <th scope="col">Кол-во</th>
                 <th scope="col">Цена (шт.)</th>
-                <th scope="col" class="" style="width: 15%">В корзину</th>
+                <th scope="col" class="" style="width: 15%"></th>
             </tr>
             </thead>
             <tbody>
