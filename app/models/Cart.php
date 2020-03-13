@@ -38,6 +38,8 @@ class Cart
         $_SESSION['cart.qty'] = isset($_SESSION['cart.qty']) ? $_SESSION['cart.qty'] + $qty : $qty;
         $_SESSION['cart.sum'] = isset($_SESSION['cart.sum']) ? $_SESSION['cart.sum'] + $qty * $price * $currency :
             $qty * $price * $currency;
+        $_SESSION['cart.sum'] = round($_SESSION['cart.sum'], 2);
+
     }
 
     public function deleteFromCart($id)
@@ -55,5 +57,23 @@ class Cart
         unset($_SESSION['cart.sum']);
         unset($_SESSION['cart.qty']);
         unset($_SESSION['cart.currency']);
+    }
+
+    public static function reCalculate($currency)
+    {
+        if(isset($_SESSION['cart.currency'])) {
+
+            $cartCurr = $_SESSION['cart.currency']['value'];
+            $cartSum = $_SESSION['cart.sum'];
+
+            foreach ($_SESSION['cart'] as &$product) {
+                $product['price'] = round(( $product['price'] / $cartCurr ) * $currency['value'], 2);
+                $product['all_price'] = round( ($product['all_price'] / $cartCurr) * $currency['value'],2);
+            }
+
+            $_SESSION['cart.sum'] = round( ($cartSum / $cartCurr) * $currency['value'],2);
+            $_SESSION['cart.currency'] = $currency;
+        }
+
     }
 }

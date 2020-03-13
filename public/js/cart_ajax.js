@@ -1,33 +1,36 @@
-var prods = document.querySelectorAll("tr.shop-prods");
+document.querySelector("span.cart-amount-qty").innerHTML =
+    document.querySelector("span.finish-amount-qty").innerHTML ?
+    document.querySelector("span.finish-amount-qty").innerHTML : "";
 
-for(i = 0; i < prods.length; i++) {
-    prods[i].addEventListener("click", function(event){
-        event.preventDefault();
-        var prod = this;
-        var id = prod.querySelector("td a.add-to-cart-link").href.split("?id=", 2)[1];
-        var qty = prod.querySelector("td.product-qty-link").innerText;
+document.querySelector("span.cart-amount-price").innerHTML =
+    document.querySelector("span.finish-amount-price").innerHTML ?
+    document.querySelector("span.finish-amount-price").innerHTML : "";
 
+function addToCart(ev, variable)
+{
+    ev.preventDefault();
 
-        var xhr = new XMLHttpRequest();
-        var method = "GET";
-        var url = "cart/add?id="+id+"&qty="+qty;
+    var id = variable.href.split("?id=", 2)[1];
+    var qty = document.querySelector("td.product-qty-" + id).innerText;
 
-        xhr.open(method, url, true);
-        xhr.setRequestHeader('X-Requested-With','XMLHttpRequest');
+    var xhr = new XMLHttpRequest();
+    var method = "GET";
+    var url = "cart/add?id="+id+"&qty="+qty;
 
-        xhr.send();
+    xhr.open(method, url, true);
+    xhr.setRequestHeader('X-Requested-With','XMLHttpRequest');
 
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState !== 4) return;
-            if (xhr.status !== 200) {
-                alert("ERROR!\n"+xhr.status + " => " + xhr.statusText);
-            } else {
-                var response = xhr.responseText;
-                showCart(response);
-            }
-        };
+    xhr.send();
 
-    });
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState !== 4) return;
+        if (xhr.status !== 200) {
+            alert("ERROR!\n"+xhr.status + " => " + xhr.statusText);
+        } else {
+            var response = xhr.responseText;
+            showCart(response);
+        }
+    };
 }
 
 function showCart(cart)
@@ -35,13 +38,25 @@ function showCart(cart)
     var elem = document.getElementById("cart");
     elem.innerHTML = cart;
     elem.style.display = "block";
+
+    document.querySelector("span.cart-amount-qty").innerHTML = document.querySelector("span.finish-amount-qty").innerHTML;
+    document.querySelector("span.cart-amount-price").innerHTML = document.querySelector("span.finish-amount-price").innerHTML;
+
     document.querySelector("div.fade").style.opacity = 1;
 }
 
+function getCart() {
+    var elem = document.getElementById("cart");
+    elem.style.display = "block";
 
+    document.querySelector("div.fade").style.opacity = 1;
+}
 
 function clearCart()
 {
+    document.querySelector("span.cart-amount-qty").innerHTML = "";
+    document.querySelector("span.cart-amount-price").innerHTML = "";
+
     var xhr = new XMLHttpRequest();
     var method = "GET";
     var url = "/cart/clear";
@@ -59,6 +74,7 @@ function clearCart()
             showCart(response);
         }
     };
+
 }
 
 function closeModal()
@@ -89,6 +105,4 @@ function deleteProduct(element)
             showCart(response);
         }
     };
-
-    // console.log(url);
 }

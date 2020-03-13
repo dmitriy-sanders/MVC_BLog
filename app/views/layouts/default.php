@@ -1,11 +1,9 @@
 <html>
 <head>
-    <title></title>
-    <meta type="description">
-    <meta type="keywords">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/hint.min.css">
 </head>
 <body onload="startTime()">
 
@@ -16,42 +14,47 @@
 <?php endif; ?>
 
 <div class="container mt-5">
-    <div class="banners mb-4">
-        <?php \app\models\LayoutModel::renderBanners() ?>
-    </div>
-    <div class="header">
-        <?php \app\models\LayoutModel::renderHeaderText();?>
-    </div>
-    <div class="payment-methods">
-        <div class="row justify-content-center">
-            <div class="col-md-3">
-                <img src="/images/qiwi.png" width="210" height="60">
-            </div>
-            <div class="col-md-3">
-                <img src="/images/robokassa.png" width="200" height="60">
-            </div>
-            <div class="col-md-3">
-                <img src="/images/webmoney.png" width="200" height="60">
-            </div>
-            <div class="col-md-3">
-                <img src="/images/yandex.png" width="200" height="60">
+    <?php if($module !== "none"): ?>
+        <div class="banners mb-4">
+            <?php \app\models\LayoutModel::renderBanners() ?>
+        </div>
+        <div class="header">
+            <?php \app\models\LayoutModel::renderHeaderText();?>
+        </div>
+        <div class="payment-methods">
+            <div class="row justify-content-center">
+                <div class="col-md-3">
+                    <img src="/images/qiwi.png" width="210" height="60">
+                </div>
+                <div class="col-md-3">
+                    <img src="/images/robokassa.png" width="200" height="60">
+                </div>
+                <div class="col-md-3">
+                    <img src="/images/webmoney.png" width="200" height="60">
+                </div>
+                <div class="col-md-3">
+                    <img src="/images/yandex.png" width="200" height="60">
+                </div>
             </div>
         </div>
-    </div>
-    <hr>
-    <div class="row">
-        <div class="col col-md-3">
-            <?php if(!isset($module) || $module !== "user"): ?>
-                <?php \app\models\LayoutModel::renderCatsList() ?>
-            <?php else: ?>
-                <?php require_once VIEWS . "/parts/user_sidebar.php" ?>
-            <?php endif; ?>
-        </div>
+        <hr>
+        <div class="row">
+            <div class="col col-md-3">
+                <?php if($module !== "user"): ?>
+                    <?php \app\models\LayoutModel::renderCatsList() ?>
+                <?php else: ?>
+                    <?php require_once VIEWS . "/parts/user_sidebar.php" ?>
+                <?php endif; ?>
+            </div>
 
-        <div class="col-md-9">
-            <?= $content ?>
+            <div class="col-md-9">
+                <?= $content ?>
+            </div>
         </div>
-    </div>
+    <?php else: ?>
+        <?= $content ?>
+    <?php endif; ?>
+
     <hr>
 
     <footer>

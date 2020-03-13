@@ -7,7 +7,7 @@
 .gray-bg {
   background: rgba(102, 120, 134, 0.6);
 }
-span.deposit {
+  .deposit {
   background: #1ba821;
   padding: 5px;
   border-radius: 4px;
@@ -16,6 +16,8 @@ span.deposit {
 .dep-text {
   color: rgba(255, 255, 255, 0.5);
   cursor: pointer;
+  display: inline-block;
+  margin-top: 10px;
 }
 .list-li {
   color: #212529;
@@ -24,6 +26,27 @@ span.deposit {
   color: #212529;
   text-decoration: none;
 }
+.cart-amount-qty, .cart-amount-price {
+  color: white;
+  /*background: red;*/
+  border-radius: 10%;
+  position: relative;
+  top: -25px;
+  display: inline-block;
+  padding: 0 1px 0 1px;
+  min-width:17px;
+}
+.cart-amount-qty {
+  background: red;
+}
+
+.cart-amount-price {
+  background: green;
+  top: 5px;
+  left: -35px;
+
+}
+/* =========================================================== */
 :root {
   --blue: #007bff;
   --indigo: #6610f2;

@@ -5,6 +5,6 @@
     <li>First Name: <?= $user['first_name']?></li>
     <li>Second Name: <?= $user['second_name']?></li>
     <li>Login: <?= $user['login'] ?></li>
-    <li>E-mail:  <?= $user['password'] ?></li>
+    <li>E-mail:  <?= $user['email'] ?></li>
     <li>Created At:  <?= $user['created_at'] ?></li>
 </ul>

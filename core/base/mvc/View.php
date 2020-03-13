@@ -26,6 +26,7 @@ class View
         }
 
         $viewFile = VIEWS . "/{$this->controller}/" . $this->view . ".php";
+
         if(file_exists($viewFile)) {
             ob_start();
             require_once $viewFile;

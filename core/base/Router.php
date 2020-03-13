@@ -19,7 +19,7 @@ class Router
 
             if(file_exists($controllerFile)) {
                 $controllerObj = new $controller(self::$route);
-                $action = self::$route['action'] . "Action";
+                $action = self::makeAction(self::$route['action']) . "Action";
                 if(method_exists($controllerObj, $action)) {
                     $controllerObj->$action();
                     $controllerObj->getView();
@@ -63,7 +63,7 @@ class Router
                     $route['action'] = "index";
                 }
                 self::$route['controller'] = self::makeController($route['controller']);
-                self::$route['action'] = $route['action'];
+                self::$route['action'] = self::makeAction($route['action']);
 
                 return true;
             }
@@ -87,6 +87,14 @@ class Router
         $name = str_replace("-", " ", $name);
         $name = ucwords($name);
         $name = str_replace(" ", "", $name);
+        return $name;
+    }
+
+    private static function makeAction($name)
+    {
+        $name = str_replace("-", " ", $name);
+        $name = ucwords($name);
+        $name = lcfirst(str_replace(" ", "", $name));
         return $name;
     }
 

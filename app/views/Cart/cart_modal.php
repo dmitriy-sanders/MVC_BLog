@@ -1,7 +1,6 @@
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-header">
-<!--            <h5 class="modal-title" id="cartModalLabel">Корзина</h5>-->
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
                 <span aria-hidden="true" >&times;</span>
             </button>
@@ -28,10 +27,21 @@
                     <?php endforeach; ?>
                     </tbody>
                     <tr class="text-right">
-                        <td colspan="4">Итого (шт.): <?= $_SESSION['cart.qty'] ?></td>
+                        <td colspan="4">
+                            Итого (шт.): <span class="finish-amount-qty"><?= $_SESSION['cart.qty'] ?></span>
+                        </td>
                     </tr>
                     <tr class="text-right">
-                        <td colspan="4">Итого: <?= $_SESSION['cart.currency']['symbol_left'].$_SESSION['cart.sum'] . " " .$_SESSION['cart.currency']['symbol_right'] ?></td>
+                        <td colspan="4">
+                            Итого:
+                            <?=
+                                $_SESSION['cart.currency']['symbol_left'].
+                                ' <span class="finish-amount-price">' .
+                                $_SESSION['cart.sum'] .
+                                '</span> ' .
+                                $_SESSION['cart.currency']['symbol_right']
+                            ?>
+                        </td>
                     </tr>
                 </table>
             <?php else: ?>
